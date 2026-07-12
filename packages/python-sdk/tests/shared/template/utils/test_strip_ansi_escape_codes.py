@@ -42,3 +42,7 @@ def test_strips_osc_hyperlink():
 
 def test_strips_osc_with_st_terminator():
     assert strip_ansi_escape_codes("\x1b]0;my title\x1b\\AFTER") == "AFTER"
+
+
+def test_strips_dcs_with_st_terminator():
+    assert strip_ansi_escape_codes("\x1bP1;2\x1b\\AFTER") == "AFTER"
